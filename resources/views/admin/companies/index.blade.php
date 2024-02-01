@@ -1,4 +1,7 @@
 
+
+
+{{-- 
 @extends('layout')
  
 @section('content')
@@ -49,6 +52,6 @@
     </table>
 </div>
 
-    {{-- {!! $company->links() !!} --}}
+    {!! $company->links() !!}
       
-@endsection
+@endsection --}}

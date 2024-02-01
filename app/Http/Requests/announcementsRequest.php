@@ -23,7 +23,25 @@ class announcementsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required',new AnnouncementsRuleRequest],
+            'title'=>['required',new AnnouncementsRuleRequest],
+            'descreption'=>'required|string',
+            'skills'=>'required|string',
+            'company_id'=>'required|integer'
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required'=>'you must fill the title',
+            'title.min'=>'title so short',
+            'title.max' => 'male it smaller',
+            'descreption.required' => 'descreption required',
+            'descreption.string' => 'descreption must be string',
+            'skills.required' => 'skills must be filled out',
+            'skills.string' => 'skills must be string',
+            'company_id.required' =>    'company_id must be filled '
         ];
     }
 }
