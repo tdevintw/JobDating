@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -13,7 +15,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+      $companies = Company::latest()->paginate();
+      return view('admin.companies.index',compact('companies'))
+        ->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -21,15 +25,18 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.companies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompanyRequest $request)
+    public function store(CompanyRequest $request)
     {
-        //
+        
+        Company::create($request->validated());
+
+        return redirect()->route('companies.index')->with('success','company added succefuly');
     }
 
     /**
@@ -37,7 +44,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return view('admin.companies.show',compact('company'));
     }
 
     /**
@@ -45,15 +52,17 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('admin.companies.edit',compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompanyRequest $request, Company $company)
+    public function update(CompanyRequest $request, Company $company)
     {
-        //
+
+        $company->update($request->validated());
+        return redirect()->route('companies.index')->with('succes','company edited succefuly');
     }
 
     /**
@@ -61,6 +70,9 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return redirect()->route('companies.index')->with('succes','deleted succefuly');
+
     }
 }

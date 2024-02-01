@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>welcome back , <?php echo $nom ;?></h1>
+    <h1>welcome back</h1>
 </body>
 </html>
