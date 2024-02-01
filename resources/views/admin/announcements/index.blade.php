@@ -19,7 +19,7 @@
                                 <th scope="col" class="px-4 py-3">descreption</th>
                                 <th scope="col" class="px-4 py-3">skills</th>
                                 <th scope="col" class="px-4 py-3">created_at</th>
-                                <th scope="col" class="px-4 py-3">updated_at</th>
+                                <th scope="col" class="px-4 py-3">company</th>
                                 <th scope="col" class="px-4 py-3">Action</th>
                             </tr>
                         </thead>
@@ -28,10 +28,10 @@
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">{{ ++$i }}</td>
                                 <td class="px-4 py-3">{{ $announcement->title }}</td>
-                                <td class="px-4 py-3">{{ $announcement->descreption }}</td>
+                                <td class="px-4 py-3">{{ $announcement->descreption}}</td>
                                 <td class="px-4 py-3">{{ $announcement->skills }}</td>
                                 <td class="px-4 py-3">{{ $announcement->created_at }}</td>
-                                <td class="px-4 py-3">{{ $announcement->updated_at }}</td>
+                                <td class="px-4 py-3">{{ $announcement->company_name }}</td>
                                 <td>
                                     <form action="{{ route('announcements.destroy',$announcement->id) }}" method="POST">
                        

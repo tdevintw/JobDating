@@ -6,6 +6,7 @@ use App\Http\Requests\announcementsRequest;
 use App\Models\announcements;
 use App\Http\Requests\StoreannouncementsRequest;
 use App\Http\Requests\UpdateannouncementsRequest;
+use App\Models\Company;
 
 class AnnouncementsController extends Controller
 
@@ -16,7 +17,10 @@ class AnnouncementsController extends Controller
    
     public function index()
     {
-      $announcements = announcements::latest()->paginate();
+      $announcements = announcements::join('companies','announcements.company_id','=','companies.id')
+      ->select('announcements.*','companies.name as company_name')
+      ->latest()
+      ->paginate();
       return view('admin.announcements.index',compact('announcements'))
         ->with('i',(request()->input('page',1)-1)*5);
     }
@@ -26,7 +30,8 @@ class AnnouncementsController extends Controller
      */
     public function create()
     {
-        return view('admin.announcements.create');
+        $companies =  Company::all();
+        return view('admin.announcements.create',compact('companies'));
     }
 
     /**
@@ -45,6 +50,7 @@ class AnnouncementsController extends Controller
      */
     public function show(announcements $announcement)
     {
+        $announcement->load('company');
         return view('admin.announcements.show',compact('announcement'));
     }
 
@@ -53,7 +59,8 @@ class AnnouncementsController extends Controller
      */
     public function edit(announcements $announcement)
     {
-        return view('admin.announcements.edit',compact('announcement'));
+        $companies = Company::all();
+        return view('admin.announcements.edit',compact('announcement','companies'));
     }
 
     /**

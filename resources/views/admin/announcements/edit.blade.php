@@ -30,10 +30,12 @@
             <input type="text" name="skills" value="{{ $announcement->skills }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text">
           </div>
           <div class="w-full md:w-1/2 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-              company_id
-            </label>
-            <input type="text" name="company_id" value="{{ $announcement->company_id }}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text">
+            <select name="company_id" id="company_id" class="form-select" aria-label="Default select example">
+              <option selected value={{ $announcement->company_id }}>{{ $announcement->company->name }}</option>
+              @foreach($companies as $company)
+              <option value={{ $company->id }}>{{ $company->name }}</option>
+              @endforeach
+          </select>
           </div>
           @if ($errors->any())
           <div class="text-center">

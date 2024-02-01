@@ -41,7 +41,8 @@ class announcementsRequest extends FormRequest
             'descreption.string' => 'descreption must be string',
             'skills.required' => 'skills must be filled out',
             'skills.string' => 'skills must be string',
-            'company_id.required' =>    'company_id must be filled '
+            'company_id.integer'=>'choose a company',
+            'company_id.required' =>    'choose a company '
         ];
     }
 }

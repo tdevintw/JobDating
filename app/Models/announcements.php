@@ -14,4 +14,9 @@ class announcements extends Model
         "skills",
         "company_id"
     ];
+
+    
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
 }
