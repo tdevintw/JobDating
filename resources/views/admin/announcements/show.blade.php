@@ -20,22 +20,5 @@
 </div>
 </div>
 
-    {{-- <div class="row">
-        
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {{ $announcement->title }}
-            </div>
-            <div class="form-group">
-                <strong>skills:</strong>
-                {{ $announcement->skills }}
-            </div>
-            <div class="form-group">
-                <strong>descreption:</strong>
-                {{ $announcement->descreption }}
-            </div>
-        </div>
-    </div> --}}
 </div>
 @endsection
