@@ -17,13 +17,11 @@ class AnnouncementsController extends Controller
    
     public function index()
     {
-      $announcements = announcements::join('companies','announcements.company_id','=','companies.id')
-      ->select('announcements.*','companies.name as company_name')
+      $announcements = announcements::with('company')
       ->latest()
       ->paginate();
       return view('admin.announcements.index',compact('announcements'))
-        ->with('i',(request()->input('page',1)-1)*5);
-    }
+        ->with('i',(request()->input('page',1)-1)*5);    }
 
     /**
      * Show the form for creating a new resource.

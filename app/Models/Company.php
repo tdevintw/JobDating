@@ -13,7 +13,5 @@ class Company extends Model
         "name"
     ];
 
-    public function company(){
-        return $this->belongsTo(Company::class);
-    }
+
 }

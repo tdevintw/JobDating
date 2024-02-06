@@ -31,7 +31,7 @@
                                 <td class="px-4 py-3">{{ $announcement->descreption}}</td>
                                 <td class="px-4 py-3">{{ $announcement->skills }}</td>
                                 <td class="px-4 py-3">{{ $announcement->created_at }}</td>
-                                <td class="px-4 py-3">{{ $announcement->company_name }}</td>
+                                <td class="px-4 py-3">{{ $announcement->company->name }}</td>
                                 <td>
                                     <form action="{{ route('announcements.destroy',$announcement->id) }}" method="POST">
                        
