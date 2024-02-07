@@ -18,10 +18,7 @@
 
                     <p class="mb-2 font-bold text-gray-700 dark:text-gray-400">Description:</p>
                     <p class="mb-2 text-gray-700 dark:text-gray-400">{{ $announcement->descreption}}</p>
-
-                    <p class="mb-2 font-bold text-gray-700 dark:text-gray-400">Skills:</p>
-                    <p class="mb-2 text-gray-700 dark:text-gray-400">{{ $announcement->skills }}</p>
-
+                    
                     <p class="mb-2 font-bold text-gray-700 dark:text-gray-400">Company Name:</p>
                     <p class="mb-2 text-gray-700 dark:text-gray-400">{{ $announcement->company->name }}</p>
 
