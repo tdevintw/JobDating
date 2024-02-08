@@ -14,12 +14,15 @@ class announcements extends Model
         "skills",
         "company_id"
     ];
-
+    
+    static function announcementCounts(){
+        return announcements::count();
+    }
     
     public function company(){
         return $this->belongsTo(Company::class);
     } 
     public function skills(){
-        $this->belongsToMany(Skill::class ,'announcement_skill');
+      return $this->belongsToMany(Skill::class ,'announcement_skill');
     }
 }

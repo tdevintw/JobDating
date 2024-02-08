@@ -43,6 +43,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    static function userCounts(){
+        return User::count();
+    }
+
     public function skills(){
         $this->belongsToMany(User::class , 'user_skill');
     }
@@ -50,4 +54,17 @@ class User extends Authenticatable
     public function roles(){
         $this->belongsToMany(Role::class , 'role_user'); 
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+
 }

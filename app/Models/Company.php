@@ -12,6 +12,8 @@ class Company extends Model
     protected $fillable = [
         "name"
     ];
-
+    static function companyCounts(){
+        return Company::count();
+    }
 
 }

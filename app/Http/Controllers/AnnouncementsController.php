@@ -7,6 +7,7 @@ use App\Models\announcements;
 use App\Http\Requests\StoreannouncementsRequest;
 use App\Http\Requests\UpdateannouncementsRequest;
 use App\Models\Company;
+use App\Models\Skill;
 
 class AnnouncementsController extends Controller
 
@@ -21,7 +22,8 @@ class AnnouncementsController extends Controller
       ->latest()
       ->paginate();
       return view('admin.announcements.index',compact('announcements'))
-        ->with('i',(request()->input('page',1)-1)*5);    }
+        ->with('i',(request()->input('page',1)-1)*5);  
+      }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +31,8 @@ class AnnouncementsController extends Controller
     public function create()
     {
         $companies =  Company::all();
-        return view('admin.announcements.create',compact('companies'));
+        $skills  = Skill::all();
+        return view('admin.announcements.create',compact('companies','skills'));
     }
 
     /**
@@ -39,7 +42,7 @@ class AnnouncementsController extends Controller
     {
         
         announcements::create($request->validated());
-
+        
         return redirect()->route('announcements.index')->with('success','announcements added succefuly');
     }
 

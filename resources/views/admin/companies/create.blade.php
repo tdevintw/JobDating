@@ -6,7 +6,7 @@
     <a  href="{{route('companies.index')}}"><button  class="bg-gray-600 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">Back</button></a>
       </div>
     <div  style="display:flex;flex-direction:column;align-items:center;"">
-      <form class="w-full max-w-lg" action="{{ route('companies.store') }}" method="POST">
+      <form class="w-full max-w-lg flex flex-col items-center" action="{{ route('companies.store') }}" method="POST">
           @csrf
 
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

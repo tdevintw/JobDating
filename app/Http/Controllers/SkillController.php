@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillRequest;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+      $skills = Skill::all();
+      
+      return view('admin/skills/index',compact('skills')); 
     }
 
     /**
@@ -20,39 +23,30 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.skills.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
-        //
+        Skill::create($request->validated());
+        return redirect()->route('skills.index')->with('success','skill added');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Skill $skill)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Skill $skill)
     {
-        //
+        return view('admin.skills.edit',compact('skill'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
-        //
+        $skill->update($request->validated());
+        return redirect()->route('skills.index')->with('succes','updated suucefuly');
     }
 
     /**
@@ -60,6 +54,7 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill)
     {
-        //
+     $skill->delete();
+     return redirect()->route('skills.index')->with('succes','deleted succusfuly');
     }
 }

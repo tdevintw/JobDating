@@ -11,7 +11,7 @@
             <div style="display:flex;felx-direction:column;justify-content:center">
             <img  style="width:50px" src="{{ asset('storage/images/pencil.png') }}" alt="no">
             </div>
-            <h2 class="title-font font-medium text-3xl text-gray-900">{{$skills}}</h2>
+            <h2 class="title-font font-medium text-3xl text-gray-900">{{$counts['skills']}}</h2>
             <p class="leading-relaxed">Skills</p>
           </div>
         </div>
@@ -20,7 +20,7 @@
             <div style="display:flex;felx-direction:column;justify-content:center">
                 <img  style="width:50px" src="{{ asset('storage/images/group.png') }}" alt="no">
                 </div>
-            <h2 class="title-font font-medium text-3xl text-gray-900">{{$users}}</h2>
+            <h2 class="title-font font-medium text-3xl text-gray-900">{{$counts['users']}}</h2>
             <p class="leading-relaxed">Users</p>
           </div>
         </div>
@@ -29,7 +29,7 @@
             <div style="display:flex;felx-direction:column;justify-content:center">
                 <img  style="width:50px" src="{{ asset('storage/images/office-building.png') }}" alt="no">
                 </div>
-            <h2 class="title-font font-medium text-3xl text-gray-900">{{$companies}}</h2>
+            <h2 class="title-font font-medium text-3xl text-gray-900">{{$counts['companies'] }}</h2>
             <p class="leading-relaxed">Companies</p>
           </div>
         </div>
@@ -38,7 +38,7 @@
             <div style="display:flex;felx-direction:column;justify-content:center">
                 <img  style="width:50px" src="{{ asset('storage/images/loudspeaker.png') }}" alt="no">
                 </div>
-            <h2 class="title-font font-medium text-3xl text-gray-900">{{$announcements}}</h2>
+            <h2 class="title-font font-medium text-3xl text-gray-900">{{$counts['announcements']}}</h2>
             <p class="leading-relaxed">Announcements</p>
           </div>
         </div>

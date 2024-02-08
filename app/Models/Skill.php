@@ -13,6 +13,10 @@ class Skill extends Model
         "name"
     ];
 
+    static function skillCounts(){
+        return Skill::count();
+    }
+
     public function users(){
     $this->belongsToMany(Skill::class , 'user_skill');
     }

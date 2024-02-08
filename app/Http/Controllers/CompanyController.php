@@ -14,7 +14,7 @@ class CompanyController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
       $companies = Company::latest()->paginate();
       return view('admin.companies.index',compact('companies'))
         ->with('i',(request()->input('page',1)-1)*5);
@@ -35,7 +35,7 @@ class CompanyController extends Controller
     {
         
         Company::create($request->validated());
-
+ 
         return redirect()->route('companies.index')->with('success','company added succefuly');
     }
 
