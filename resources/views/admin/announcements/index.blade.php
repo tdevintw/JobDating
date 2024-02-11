@@ -29,6 +29,14 @@
                                 <td class="px-4 py-3">{{ ++$i }}</td>
                                 <td class="px-4 py-3">{{ $announcement->title }}</td>
                                 <td class="px-4 py-3">{{ $announcement->descreption}}</td>
+                                <td class="px-4 py-3">
+                                    @foreach ($announcement->skills as $skill)
+                                        {{ $skill->name }}
+                                        @if (!$loop->last)
+                                            , 
+                                        @endif
+                                    @endforeach
+                                </td>
                                 <td class="px-4 py-3">{{ $announcement->created_at }}</td>
                                 <td class="px-4 py-3">{{ $announcement->company->name }}</td>
                                 <td>

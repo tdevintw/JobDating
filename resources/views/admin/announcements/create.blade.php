@@ -15,28 +15,31 @@
               <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                   Title
                   </label>
-              <input type="text" nphpcase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                descreption
-              </label>
-              <input type="text" name="descreption" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text">
+                  <input type="text" name="title" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text">
+
+            </div>
+            
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                  description
+                  </label>
+                  <input type="text" name="descreption" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text">
+
             </div>
             <div class="w-full md:w-1/2 px-3 mt-3">
               <select name="company_id" id="company_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-label="Default select example">
                 <option selected>add company</option>
                 @foreach($companies as $company)
                 <option value={{ $company->id }}>{{ $company->name }}</option>
-                
                 @endforeach
-            </select>
+               </select>
             </div>
-            <div class="w-full md:w-1/2 px-3 mt-3">
-              <select name="skill_id" id="skill_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" aria-label="Default select example">
-                <option selected>add skill</option>
+            <div class="w-full mt-3">
+              <select class="js-example-basic-multiple w-full" name="skills[]" multiple="multiple" >
                 @foreach($skills as $skill)
-                <option value={{ $skill->id }}>{{ $skill->name }}</option>
-                
+                <option value="{{ $skill->id }}">{{ $skill->name }}</option>
                 @endforeach
-            </select>
+              </select>
             </div>
             @if ($errors->any())
             <div class="text-center">
@@ -53,5 +56,9 @@
             
         </form>
    
-
+        <script>
+            $(document).ready(function() {
+                $('.js-example-basic-multiple').select2();
+            });
+        </script>
 @endsection

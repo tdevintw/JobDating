@@ -25,7 +25,7 @@ class announcementsRequest extends FormRequest
         return [
             'title'=>['required',new AnnouncementsRuleRequest],
             'descreption'=>'required|string',
-            'skills'=>'required|string',
+            'skills'=>'required',
             'company_id'=>'required|integer'
 
         ];
@@ -40,7 +40,6 @@ class announcementsRequest extends FormRequest
             'descreption.required' => 'descreption required',
             'descreption.string' => 'descreption must be string',
             'skills.required' => 'skills must be filled out',
-            'skills.string' => 'skills must be string',
             'company_id.integer'=>'choose a company',
             'company_id.required' =>    'choose a company '
         ];
