@@ -40,11 +40,14 @@
                                 <td class="px-4 py-3">{{ $announcement->created_at }}</td>
                                 <td class="px-4 py-3">{{ $announcement->company->name }}</td>
                                 <td>
-                                    <form action="{{ route('announcements.destroy',$announcement->id) }}" method="POST">
+                                    <form action="{{ route('announcements.destroy',$announcement->id) }}" method="POST" style="display: flex;flex-wrap:nowrap;gap:5px;">
                        
                                         <a class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded" href="{{ route('announcements.show',$announcement->id) }}">Show</a>
                         
                                         <a class="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded" href="{{ route('announcements.edit',$announcement->id) }}">Edit</a>
+                                        
+                                        <a class="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded" href="{{ route('applies.show',$announcement->id) }}">Applies</a>
+
                        
                                         @csrf
                                         @method('DELETE')

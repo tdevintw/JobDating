@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applies', function (Blueprint $table) {
+        Schema::table('applies', function (Blueprint $table) {
+            $table->unsignedBigInteger('announcement_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('announcement_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('announcement_id')->references('id')->on('announcements')->onDelete('cascade');
-            $table->unsignedBigInteger('announcement_id');
-            $table->enum('status', ['pending', 'accepted', 'deleted'])->default('pending');
-            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_skill');
+        //
     }
 };

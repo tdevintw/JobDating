@@ -25,4 +25,7 @@ class announcements extends Model
     public function skills(){
       return $this->belongsToMany(Skill::class ,'announcement_skill');
     }
+    public function applies(){
+        return $this->hasMany(Apply::class);
+      }
 }

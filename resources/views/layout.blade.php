@@ -68,7 +68,8 @@
              </div>
              
               {{-- end of dashboard dropdown --}}
-             
+              <a href="{{ route('profile.edit')}}"><button  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Profile </button>
+              </a>
               <li>
                 <div class="hidden sm:flex sm:items-center sm:ms-6">
               
@@ -84,7 +85,6 @@
                             </div>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -97,6 +97,7 @@
                             </x-dropdown-link>
                         </form>
                     </x-slot>
+                   
                 </x-dropdown>
                 </div>
                 

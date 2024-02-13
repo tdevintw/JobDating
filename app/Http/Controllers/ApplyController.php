@@ -7,59 +7,47 @@ use Illuminate\Http\Request;
 
 class ApplyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index($id = null)
     {
-        //
+        if ($id) {
+            $applies = Apply::with(['user', 'announcement'])->where('announcements_id', $id)->get();
+        } else {
+            $applies = Apply::with(['user', 'announcement'])->get();
+        }
+        return view('admin.applies.index', compact('applies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'announcements_id' => 'required|exists:announcements,id', // Ensure the announcement exists
+        ]);
+
+        // Create a new apply instance
+        $apply = new Apply();
+        $apply->announcements_id = $request->announcements_id;
+        $apply->user_id = auth()->id(); // Assuming you're using authentication
+
+
+        // Save the apply
+        $apply->save();
+
+        // Redirect back or wherever you want
+        return back()->with('success', 'Application submitted successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Apply $apply)
-    {
-        //
+    public function accept(Apply $apply){
+        $apply->update(['status' => 'accepted']);
+        return redirect()->back()->with('success', 'Apply accepted successfully.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Apply $apply)
-    {
-        //
+    public function reject(Apply $apply){
+        $apply->update(['status' => 'rejected']);
+        return redirect()->back()->with('success', 'Apply rejected successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Apply $apply)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Apply $apply)
-    {
-        //
-    }
+
 }

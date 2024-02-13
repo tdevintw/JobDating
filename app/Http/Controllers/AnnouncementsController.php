@@ -25,7 +25,7 @@ class AnnouncementsController extends Controller
         ->with('i',(request()->input('page',1)-1)*5);  
       }
 
-    /**
+    /**_
      * Show the form for creating a new resource.
      */
     public function create()
@@ -61,7 +61,8 @@ class AnnouncementsController extends Controller
     public function show(announcements $announcement)
     {
         $announcement->load('company');
-        return view('admin.announcements.show',compact('announcement'));
+        $skills = $announcement->skills;
+        return view('admin.announcements.show',compact('announcement','skills'));
     }
 
     /**

@@ -9,7 +9,6 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +34,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/announcements', AnnouncementsController::class);
     Route::resource('admin/statics', StaticController::class);
     Route::resource('admin/skills', SkillController::class);
-    Route::resource('admin/applies', ApplyController::class);
+    Route::get('admin/applies', [ApplyController::class, 'index'])->name('applies.index');
+    Route::get('admin/applies/{id}', [ApplyController::class, 'index'])->name('applies.show');
     Route::resource('admin/users', UserController::class);
+    Route::post('/profile/update-skills', [ProfileController::class, 'updateSkills'])->name('profile.updateSkills');
+    Route::post('/applies', [ApplyController::class, 'store'])->name('applies.store');
+    Route::post('admin/applies/{apply}/accept', [ApplyController::class, 'accept'])->name('applies.accept');
+    Route::post('admin/applies/{apply}', [ApplyController::class, 'reject'])->name('applies.reject');
+
+
+
 
 });
 

@@ -6,12 +6,15 @@ use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Models\announcements;
+use App\Models\Apply;
 use Illuminate\Http\Request;
 
 class HomeController{
     public function index()
     {
      $no_data=[];
+     $applies = Apply::all();
+
       $announcements = announcements::join('companies','announcements.company_id','=','companies.id')
       ->select('announcements.*','companies.name as company_name')
       ->latest()
@@ -19,7 +22,7 @@ class HomeController{
       if($announcements->isEmpty()){
         $no_data = ['message'=>'There is No Announcements for the moment','emoji'=>'T-T'];
       }
-      return view('home',compact('announcements','no_data'))
+      return view('home',compact('announcements','no_data','applies'))
         ->with('i',(request()->input('page',1)-1)*5);
     }
 }
